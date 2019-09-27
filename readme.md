@@ -4,7 +4,7 @@ Takes a public Koha report and checks each URL (`856$u`) to see if they resolve 
 
 ## Setup
 
-Uses Python 3 and the dependencies in requirements.txt as well as configuration values in a file named "config.txt". This is how I would go about setting it up:
+Uses Python 3 and the dependencies in requirements.txt as well as configuration values in a file named "config.py". This is how I would go about setting it up:
 
 ```sh
 > virtualenv -p python3 .
