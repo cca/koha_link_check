@@ -9,3 +9,7 @@ Use the included `report.sql` to create a SQL report in Koha, be sure to set "Pu
 The app prints URLs with non-200 HTTP response statuses. It also catches HTTP exceptions within the requests library, which can occur when a domain is unavailable.
 
 Some websites have poor server hygiene and send successful HTTP responses with non-200 error codes. Not a lot we can do about that.
+
+# LICENSE
+
+[ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
