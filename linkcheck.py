@@ -31,7 +31,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 report = requests.get(config.report_url, verify=False)
 sums = { "exception": 0 }
 
-for bib in report.json()[:500]:
+for bib in report.json():
     # bibs are arrays like [urls string, title, biblionumber]
     urls, title, id = bib
     # urls are separated by " | "
