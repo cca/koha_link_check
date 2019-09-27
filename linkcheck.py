@@ -29,8 +29,9 @@ def quote(list):
 # our Koha cert isn't recognized but it's fine, silence this warning
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 report = requests.get(config.report_url, verify=False)
+sums = { "exception": 0 }
 
-for bib in report.json():
+for bib in report.json()[:500]:
     # bibs are arrays like [urls string, title, biblionumber]
     urls, title, id = bib
     # urls are separated by " | "
@@ -38,10 +39,17 @@ for bib in report.json():
     for url in urls:
         try:
             r = requests.get(url)
+            status = r.status_code
+            if not sums.get(status): sums[status] = 0
+            sums[status] += 1
             # distinguish between severity of 5XX & 4XX HTTP errors
-            if r.status_code >= 500:
-                logger.error(quote([title, config.opac_url.format(id=id), r.status_code, url]))
-            elif r.status_code >= 400:
-                logger.warning(quote([title, config.opac_url.format(id=id), r.status_code, url]))
+            if status >= 500:
+                logger.error(quote([title, config.opac_url.format(id=id), status, url]))
+            elif status >= 400:
+                logger.warning(quote([title, config.opac_url.format(id=id), status, url]))
         except:
             logger.error(quote([title, config.opac_url.format(id=id), 'HTTP Exception', url]))
+            sums["exception"] += 1
+
+print('Link check summary:')
+print(sums)
