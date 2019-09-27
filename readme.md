@@ -2,6 +2,19 @@
 
 Takes a public Koha report and checks each URL (`856$u`) to see if they resolve successfully.
 
+## Setup
+
+Uses Python 3 and the dependencies in requirements.txt as well as configuration values in a file named "config.txt". This is how I would go about setting it up:
+
+```sh
+> virtualenv -p python3 .
+> pip install -r requirements.txt
+> cp example.config.py config.py
+> vim config.py # edit the configuration URLs
+```
+
+Usage: `python linkcheck.py`
+
 ## Notes
 
 Use the included `report.sql` to create a SQL report in Koha, be sure to set "Public" to "Yes" so the report JSON can be publicly accessed.
