@@ -4,16 +4,11 @@ Takes a public Koha report and checks each URL (`856$u`) to see if they resolve 
 
 ## Setup
 
-Uses Python 3 and the dependencies in requirements.txt as well as configuration values in a file named "config.py". This is how I would go about setting it up:
-
-```sh
-> virtualenv -p python3 .
-> pip install -r requirements.txt
-> cp example.config.py config.py
-> vim config.py # edit the configuration URLs
-```
+Uses pipenv, Python 3, and requests. To get started: `pipenv install && pipenv shell`
 
 Usage: `python linkcheck.py`
+
+Logs output to console and a CSV file.
 
 ## Notes
 
