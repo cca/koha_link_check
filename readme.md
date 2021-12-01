@@ -4,7 +4,7 @@ Takes a public Koha report and checks each URL (`856$u`) to see if they resolve 
 
 ## Setup
 
-Uses pipenv, Python 3, and requests. To get started: `pipenv install && pipenv shell`
+Uses poetry, Python 3, and requests. To get started: `poetry install && poetry shell`
 
 Usage: `python linkcheck.py`
 
