@@ -35,7 +35,7 @@ for bib in report.json():
     urls = urls.split(' | ')
     for url in urls:
         try:
-            r = httpx.get(url)
+            r = httpx.get(url, follow_redirects=True)
             status = r.status_code
             if not sums.get(status): sums[status] = 0
             sums[status] += 1
