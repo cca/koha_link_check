@@ -1,9 +1,8 @@
 import csv
 import io
 import logging
-import urllib3
 
-import requests
+import httpx
 
 import config
 
@@ -26,9 +25,7 @@ def quote(list):
     writer.writerow(list)
     return output.getvalue().strip()
 
-# our Koha cert isn't recognized but it's fine, silence this warning
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-report = requests.get(config.report_url, verify=False)
+report = httpx.get(config.report_url)
 sums = { "exception": 0 }
 
 for bib in report.json():
@@ -38,7 +35,7 @@ for bib in report.json():
     urls = urls.split(' | ')
     for url in urls:
         try:
-            r = requests.get(url)
+            r = httpx.get(url)
             status = r.status_code
             if not sums.get(status): sums[status] = 0
             sums[status] += 1
