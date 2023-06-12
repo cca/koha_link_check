@@ -2,11 +2,19 @@
 
 Takes a public Koha report and checks each URL (`856$u`) to see if they resolve successfully.
 
-## Setup
+## Setup & Usage
 
-Uses poetry, Python 3, and requests. To get started: `poetry install && poetry shell`
+Uses poetry, Python 3, and requests. To get start ensure you have [Homebrew](https://brew.sh) then:
 
-Usage: `python linkcheck.py`
+```sh
+# if you don't have python3 & poetry already
+brew install python3 poetry
+# create & enter project virtualenv
+poetry install
+poetry shell
+# run it
+python linkcheck.py
+```
 
 Logs output to console and a CSV file.
 
@@ -18,6 +26,6 @@ The app prints URLs with non-200 HTTP response statuses. It also catches HTTP ex
 
 Some websites have poor server hygiene and send successful HTTP responses with non-200 error codes. Not a lot we can do about that.
 
-# LICENSE
+## LICENSE
 
 [ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
