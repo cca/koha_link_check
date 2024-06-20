@@ -1,3 +1,9 @@
+# DEFUNCT - SEE [cca/koha_qa](https://github.com/cca/koha_qa)
+
+This project has been included in our koha_qa tools and will no longer be updated here. Original readme below.
+
+----
+
 # Check links in MARC records
 
 Takes a public Koha report and checks each URL (`856$u`) to see if they resolve successfully.
